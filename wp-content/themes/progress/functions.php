@@ -412,7 +412,9 @@ function twenty_twenty_one_scripts() {
 	wp_enqueue_style( 'twenty-twenty-one-print-style', get_template_directory_uri() . '/assets/css/print.css', array(), wp_get_theme()->get( 'Version' ), 'print' );
 	wp_enqueue_style( 'bootstrap-style', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' , array(), $theme_version );
 	wp_enqueue_style( 'select2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' , array(), $theme_version );
+	wp_enqueue_style( 'light-box-css', 'https://www.jqueryscript.net/css/jquerysctipttop.css' , array(), $theme_version );
 	
+	wp_enqueue_style( 'lightbox', get_template_directory_uri() . '/assets/css/lightboxed.css', array(), wp_get_theme()->get( 'Version' ) );
 	wp_enqueue_style( 'main', get_template_directory_uri() . '/assets/css/main.css', array(), wp_get_theme()->get( 'Version' ) );
 	
 
@@ -457,12 +459,13 @@ function twenty_twenty_one_scripts() {
 			wp_get_theme()->get( 'Version' ),
 			true
 		);
-		wp_enqueue_script( 'jQuery-library-js', 'https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js', array(), $theme_version, false );
+		wp_enqueue_script( 'jQuery-library-js', 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js', array(), $theme_version, false );
 		wp_enqueue_script( 'popper-js', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', array(), $theme_version, false );
 		wp_enqueue_script( 'bootstrap-js', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', array(), $theme_version, false );
 		wp_enqueue_script( 'select2-js', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', array(), $theme_version, false );
 		wp_enqueue_script( 'jquery-validate', 'https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js' , array(), $theme_version );
 		wp_enqueue_script( 'additional-jquery-validate', 'https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.min.js' , array(), $theme_version );
+		wp_enqueue_script( 'lightbox-js', get_template_directory_uri() . '/assets/js/lightboxed.js', array(), $theme_version, false );
 		wp_enqueue_script( 'custom-js', get_template_directory_uri() . '/assets/js/custom.js', array(), $theme_version, false );
 		
 	}
@@ -654,3 +657,56 @@ function twentytwentyone_add_ie_class() {
 	<?php
 }
 add_action( 'wp_footer', 'twentytwentyone_add_ie_class' );
+
+
+// Set UI labels for Custom Post Type
+$labels = array(
+	'name'               => _x( 'Blog', 'Post Type General Name', 'twentytwentyone' ),
+	'singular_name'      => _x( 'Blog', 'Post Type Singular Name', 'twentytwentyone' ),
+	'menu_name'          => __( 'Blog', 'twentytwentyone' ),
+	'parent_item_colon'  => __( 'Parent Blog', 'twentytwentyone' ),
+	'all_items'          => __( 'All Blog', 'twentytwentyone' ),
+	'view_item'          => __( 'View Blog', 'twentytwentyone' ),
+	'add_new_item'       => __( 'Add New Blog', 'twentytwentyone' ),
+	'add_new'            => __( 'Add New', 'twentytwentyone' ),
+	'edit_item'          => __( 'Edit Blog', 'twentytwentyone' ),
+	'update_item'        => __( 'Update Blog', 'twentytwentyone' ),
+	'search_items'       => __( 'Search Blog', 'twentytwentyone' ),
+	'not_found'          => __( 'Not Found', 'twentytwentyone' ),
+	'not_found_in_trash' => __( 'Not found in Trash', 'twentytwentyone' ),
+	);
+	
+	// Set other options for Custom Post Type
+	
+	$args = array(
+	'label'               => __( 'Blog', 'twentytwentyone' ),
+	'description'         => __( 'Blog', 'twentytwentyone' ),
+	'labels'              => $labels,
+	'supports'            => array( 'title', 'editor','thumbnail' ),
+	'taxonomies'          => array( 'genres' ),
+	'hierarchical' 		  => false,
+	'public' 			  => true,
+	'show_ui' 			  => true,
+	'show_in_menu' 		  => true,
+	'show_in_nav_menus'   => true,
+	'show_in_admin_bar'   => true,
+	'menu_position'       => 5,
+	'can_export'          => true,
+	'has_archive'         => true,
+	'exclude_from_search' => false,
+	'publicly_queryable'  => true,
+	'capability_type'     => 'post',
+	'show_in_rest'        => true,
+	
+	);
+
+	register_post_type( 'blog', $args );
+	
+	
+	
+	/* Hook into the 'init' action so that the function
+	* Containing our post type registration is not
+	* unnecessarily executed.
+	*/
+	
+	add_action( 'init', 'custom_post_type', 0 );

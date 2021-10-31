@@ -34,7 +34,7 @@
 	</nav><!-- #site-navigation -->
 
 	<!-- #social icon -->
-	<div class="socal-icon">
+	<div class="socal-icon d-none d-md-block">
 		<ul>
 			<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/uploads/2021/10/instagram-sketched-1.png" class="img-fluid"></a></li>
 			<li><a href="#"><img src="<?php echo site_url(); ?>/wp-content/uploads/2021/10/twitter-1.png" class="img-fluid"></a></li>
