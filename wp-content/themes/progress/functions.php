@@ -661,17 +661,17 @@ add_action( 'wp_footer', 'twentytwentyone_add_ie_class' );
 
 // Set UI labels for Custom Post Type
 $labels = array(
-	'name'               => _x( 'Blog', 'Post Type General Name', 'twentytwentyone' ),
-	'singular_name'      => _x( 'Blog', 'Post Type Singular Name', 'twentytwentyone' ),
-	'menu_name'          => __( 'Blog', 'twentytwentyone' ),
-	'parent_item_colon'  => __( 'Parent Blog', 'twentytwentyone' ),
-	'all_items'          => __( 'All Blog', 'twentytwentyone' ),
-	'view_item'          => __( 'View Blog', 'twentytwentyone' ),
-	'add_new_item'       => __( 'Add New Blog', 'twentytwentyone' ),
+	'name'               => _x( 'Scene', 'Post Type General Name', 'twentytwentyone' ),
+	'singular_name'      => _x( 'Scene', 'Post Type Singular Name', 'twentytwentyone' ),
+	'menu_name'          => __( 'Scene', 'twentytwentyone' ),
+	'parent_item_colon'  => __( 'Parent Scene', 'twentytwentyone' ),
+	'all_items'          => __( 'All Scene', 'twentytwentyone' ),
+	'view_item'          => __( 'View Scene', 'twentytwentyone' ),
+	'add_new_item'       => __( 'Add New Scene', 'twentytwentyone' ),
 	'add_new'            => __( 'Add New', 'twentytwentyone' ),
-	'edit_item'          => __( 'Edit Blog', 'twentytwentyone' ),
-	'update_item'        => __( 'Update Blog', 'twentytwentyone' ),
-	'search_items'       => __( 'Search Blog', 'twentytwentyone' ),
+	'edit_item'          => __( 'Edit Scene', 'twentytwentyone' ),
+	'update_item'        => __( 'Update Scene', 'twentytwentyone' ),
+	'search_items'       => __( 'Search Scene', 'twentytwentyone' ),
 	'not_found'          => __( 'Not Found', 'twentytwentyone' ),
 	'not_found_in_trash' => __( 'Not found in Trash', 'twentytwentyone' ),
 	);
@@ -679,8 +679,8 @@ $labels = array(
 	// Set other options for Custom Post Type
 	
 	$args = array(
-	'label'               => __( 'Blog', 'twentytwentyone' ),
-	'description'         => __( 'Blog', 'twentytwentyone' ),
+	'label'               => __( 'Scene', 'twentytwentyone' ),
+	'description'         => __( 'Scene', 'twentytwentyone' ),
 	'labels'              => $labels,
 	'supports'            => array( 'title', 'editor','thumbnail' ),
 	'taxonomies'          => array( 'genres' ),
@@ -700,7 +700,7 @@ $labels = array(
 	
 	);
 
-	register_post_type( 'blog', $args );
+	register_post_type( 'scenes', $args );
 	
 	
 	

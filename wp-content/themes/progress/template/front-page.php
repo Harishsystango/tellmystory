@@ -35,7 +35,7 @@ get_header();
                     <div class="wrap">
                         <a href="<?php echo site_url(); ?>" class="single-image portrait animatelink" style="background: url('<?php echo get_field("gallery-image-1")["url"] ?>') center center; background-size: cover;">
                             <div class="overlay"></div>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22,12a11.6,11.6,0,0,1-10,6A11.6,11.6,0,0,1,2,12,11.6,11.6,0,0,1,12,6,11.6,11.6,0,0,1,22,12Z" fill="none" stroke="<?php echo site_url(); ?>fff" stroke-width="1.5"></path><circle cx="12" cy="12" r="3" fill="none" stroke="#fff" stroke-width="1.5"></circle></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22,12a11.6,11.6,0,0,1-10,6A11.6,11.6,0,0,1,2,12,11.6,11.6,0,0,1,12,6,11.6,11.6,0,0,1,22,12Z" fill="none" stroke="#fff" stroke-width="1.5"></path><circle cx="12" cy="12" r="3" fill="none" stroke="#fff" stroke-width="1.5"></circle></svg>
                         </a>
                         <a href="<?php echo site_url(); ?>" class="single-image landscape animatelink" style="background: url('<?php echo get_field("gallery-image-2")["url"] ?>') center center; background-size: cover;">
                             <div class="overlay"></div>
@@ -66,15 +66,7 @@ get_header();
                             <a class="btn btn-primary" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
                         <?php endif; ?>
 
-                        <?php 
-                        $link = get_field('work-btn-outline');
-                        if( $link ): 
-                            $link_url = $link['url'];
-                            $link_title = $link['title'];
-                            $link_target = $link['target'] ? $link['target'] : '_self';
-                            ?>
-                            <a class="btn btn-border" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
-                        <?php endif; ?>
+                       
                         <!-- <a class=""><?php //echo get_field("work_btn") ?></a> -->
                         <!-- <a class="btn btn-border"><?php //echo get_field("work-btn-outline") ?></a> -->
                     </div>
@@ -115,7 +107,25 @@ get_header();
                     <?php
                 endwhile;
                 endif;
-            ?>                
+            ?>  
+            <div class="col-md-4 offset-4 mt-5">
+                <div class="btn-wrapper text-center">
+                    <?php 
+                        $link = get_field('work_btn');
+                        if( $link ): 
+                            $link_url = $link['url'];
+                            $link_title = $link['title'];
+                            $link_target = $link['target'] ? $link['target'] : '_self';
+                            ?>
+                            <a class="btn btn-primary" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+                        <?php endif; ?>
+
+                        
+                        <!-- <a class=""><?php //echo get_field("work_btn") ?></a> -->
+                        <!-- <a class="btn btn-border"><?php //echo get_field("work-btn-outline") ?></a> -->
+                </div>              
+
+            </div>
         </div>
     </div>
 </section>

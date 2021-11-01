@@ -10,10 +10,22 @@
  */
 
 get_header();
+$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' ); 
+			
 ?>
+<section class="banner-wrapper" style="background: url(<?php echo $image[0]; ?>)">
+	<div class="banner-inner">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="banner-title-wrapper">
+					<h3 class="banner-title"><?php echo the_title(); ?></h3>                    
+				</div>             
+			</div>
+		</div>
+	</div>
+</section>
 
-
-<section class="default-template">
+<section class="default-template mt-5">
 	<div class="container">
 		<div class="row">
 			<?php
@@ -35,3 +47,4 @@ get_header();
 	</div>
 </sction>
 
+<?php get_footer(); ?>
